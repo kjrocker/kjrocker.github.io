@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kevin Rocker - Intro to GIN Indices</title>
+    <link rel="stylesheet" href="../css/default.css" />
+    <link rel="stylesheet" href="../css/syntax.css" />
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <a href="../">My Hakyll Blog</a>
+      </div>
+      <nav>
+        <a href="../">Home</a>
+        <a href="../about.html">About</a>
+        <a href="../contact.html">Contact</a>
+        <a href="../archive.html">Archive</a>
+      </nav>
+    </header>
+
+    <main role="main">
+      <h1>Intro to GIN Indices</h1>
+      <article>
+    <section class="header">
+        Posted on August 12, 2015
+        
+    </section>
+    <section>
+        <p>I want to talk about my deep dives into the PostgreSQL documentation, so I’m going to start posting short tidbits to LinkedIn. This is <em>probably</em> a prequel to making a blog.</p>
+<p>I want to talk about GIN Indexes. Most times when we’re created an index, we want to order data for range queries, do an equality search, or sort efficiently. These are all B-Tree indexes, and they’re not the only type. Just like B-Trees improve some operations, GIN indexes improve a whole separate group of operations involving collections.</p>
+<p>Let’s imagine a table like this:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> farm_animals (</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">id</span> SERIAL <span class="kw">PRIMARY</span> <span class="kw">KEY</span>,</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    name TEXT <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    tags TEXT[] <span class="kw">NOT</span> <span class="kw">NULL</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>);</span></code></pre></div>
+<p>Loaded up with values</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> farm_animals (name, tags) <span class="kw">VALUES</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>(<span class="st">'Chicken'</span>, <span class="dt">ARRAY</span>[<span class="st">'bird'</span>, <span class="st">'domestic'</span>]),</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>(<span class="st">'Cow'</span>, <span class="dt">ARRAY</span>[<span class="st">'mammal'</span>, <span class="st">'domestic'</span>]),</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>(<span class="st">'Rooster'</span>, <span class="dt">ARRAY</span>[<span class="st">'bird'</span>, <span class="st">'domestic'</span>]),</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>(<span class="st">'Dog'</span>, <span class="dt">ARRAY</span>[<span class="st">'mammal'</span>, <span class="st">'domestic'</span>, <span class="st">'pet'</span>]),</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>(<span class="st">'Cat'</span>, <span class="dt">ARRAY</span>[<span class="st">'mammal'</span>, <span class="st">'domestic'</span>, <span class="st">'pet'</span>]),</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>(<span class="st">'Fish'</span>, <span class="dt">ARRAY</span>[<span class="st">'aquatic'</span>]);</span></code></pre></div>
+<p>We try to find all the birds, but it’s just too slow. This is going to be a very high-traffic query, and our data-set is huge.</p>
+<p>A GIN index will unpack the array, and put each <em>unique value</em> on its own row with a list of pointers to all the rows containing that value.</p>
+<p>The resulting index looks like this WOOHOO</p>
+<pre><code>farm_animals Table       GIN Index on tags
+------------------       ---------------------
+id | name    | tags      key     | row_pointers
+---|---------|--------   ------- | -------------
+ 1 | Chicken | bird      bird    | 1, 3
+ 2 | Cow     | mammal    mammal  | 2, 4, 5
+ 3 | Rooster | bird      domestic| 1, 2, 3, 4, 5
+ 4 | Dog     | mammal    pet     | 4, 5
+ 5 | Cat     | mammal    aquatic | 6
+ 6 | Fish    | aquatic</code></pre>
+<p>Now we can safely ask questions like “how many farm animals are domestic mammals?” or “find all the birds” without parsing the array column at all, just from the index. Now all our farm animal searches will scale.</p>
+<p>This can be used to unpack array columns, JSON columns, and used to create an index for full-text search (which definitely deserves its own topic).</p>
+<p>I hope you enjoyed Kevin’s Postgres corner.</p>
+    </section>
+</article>
+
+    </main>
+  </body>
+</html>
