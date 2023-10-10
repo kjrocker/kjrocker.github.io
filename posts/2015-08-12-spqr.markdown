@@ -20,21 +20,21 @@ Loaded up with values
 
 ```sql
 INSERT INTO farm_animals (name, tags) VALUES
-('Chicken', ARRAY['bird', 'domestic']),
-('Cow', ARRAY['mammal', 'domestic']),
-('Rooster', ARRAY['bird', 'domestic']),
-('Dog', ARRAY['mammal', 'domestic', 'pet']),
-('Cat', ARRAY['mammal', 'domestic', 'pet']),
-('Fish', ARRAY['aquatic']);
+    ('Chicken', ARRAY['bird', 'domestic']),
+    ('Cow', ARRAY['mammal', 'domestic']),
+    ('Rooster', ARRAY['bird', 'domestic']),
+    ('Dog', ARRAY['mammal', 'domestic', 'pet']),
+    ('Cat', ARRAY['mammal', 'domestic', 'pet']),
+    ('Fish', ARRAY['aquatic']);
 ```
 
 We try to find all the birds, but it's just too slow. This is going to be a very high-traffic query, and our data-set is huge.
 
 A GIN index will unpack the array, and put each _unique value_ on its own row with a list of pointers to all the rows containing that value.
 
-The resulting index looks like this WOOHOO
+The resulting index looks like this:
 
-```
+```txt
 farm_animals Table       GIN Index on tags
 ------------------       ---------------------
 id | name    | tags      key     | row_pointers
