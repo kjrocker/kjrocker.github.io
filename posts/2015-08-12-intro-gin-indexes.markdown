@@ -1,5 +1,5 @@
 ---
-title: Intro to GIN Indices
+title: Intro to GIN Indexes
 ---
 
 I want to talk about my deep dives into the PostgreSQL documentation, which has totally consumed me the past few weeks.
