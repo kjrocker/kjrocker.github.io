@@ -2,9 +2,9 @@
 title: Intro to GIN Indices
 ---
 
-I want to talk about my deep dives into the PostgreSQL documentation, so I'm going to start posting short tidbits to LinkedIn. This is _probably_ a prequel to making a blog.
+I want to talk about my deep dives into the PostgreSQL documentation, which has totally consumed me the past few weeks.
 
-I want to talk about GIN Indexes. Most times when we're created an index, we want to order data for range queries, do an equality search, or sort efficiently. These are all B-Tree indexes, and they're not the only type. Just like B-Trees improve some operations, GIN indexes improve a whole separate group of operations involving collections.
+I've been reading about advanced indexes, particularly GIN Indexes. Most times when we're created an index, we want to order data for range queries, do an equality search, or sort efficiently. These are all B-Tree indexes, and they're not the only type. <!--more--> Just like B-Trees improve some basic lookup and sorting operations, GIN indexes improve a whole separate group of queries involving collections.
 
 Let's imagine a table like this:
 

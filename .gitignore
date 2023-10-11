@@ -2,3 +2,7 @@ dist-newstyle/
 _cache/
 _site/
 node_modules
+
+site
+site.hi
+site.o

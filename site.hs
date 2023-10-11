@@ -3,8 +3,6 @@
 
 import Data.Monoid (mappend)
 import Hakyll
-import Text.Pandoc.Highlighting (Style, breezeDark, styleToCss)
-import Text.Pandoc.Options (ReaderOptions (..), WriterOptions (..))
 
 --------------------------------------------------------------------------------
 main :: IO ()
@@ -13,21 +11,15 @@ main = hakyll $ do
     route idRoute
     compile copyFileCompiler
 
-  create
-    ["css/syntax.css"]
-    $ do
-      route idRoute
-      compile $ do
-        makeItem $ styleToCss pandocCodeStyle
-
   match "css/*" $ do
     route idRoute
     compile compressCssCompiler
 
-  match (fromList ["about.rst", "contact.markdown"]) $ do
+  match (fromList ["about.markdown"]) $ do
     route $ setExtension "html"
     compile $
       pandocCompiler
+        >>= loadAndApplyTemplate "templates/static.html" defaultContext
         >>= loadAndApplyTemplate "templates/default.html" defaultContext
         >>= relativizeUrls
 
@@ -35,6 +27,7 @@ main = hakyll $ do
     route $ setExtension "html"
     compile $
       pandocCompiler
+        >>= saveSnapshot "content"
         >>= loadAndApplyTemplate "templates/post.html" postCtx
         >>= loadAndApplyTemplate "templates/default.html" postCtx
         >>= relativizeUrls
@@ -56,13 +49,13 @@ main = hakyll $ do
   match "index.html" $ do
     route idRoute
     compile $ do
-      posts <- recentFirst =<< loadAll "posts/*"
+      posts <- fmap (take 10) . recentFirst =<< loadAll "posts/*"
       let indexCtx =
             listField "posts" postCtx (return posts)
               `mappend` defaultContext
 
       getResourceBody
-        >>= applyAsTemplate indexCtx
+        >>= applyAsTemplate (teaserField "teaser" "content" <> indexCtx)
         >>= loadAndApplyTemplate "templates/default.html" indexCtx
         >>= relativizeUrls
 
@@ -72,7 +65,4 @@ main = hakyll $ do
 postCtx :: Context String
 postCtx =
   dateField "date" "%B %e, %Y"
-    `mappend` defaultContext
-
-pandocCodeStyle :: Style
-pandocCodeStyle = breezeDark
+    `mappend` (teaserField "teaser" "content" <> defaultContext)

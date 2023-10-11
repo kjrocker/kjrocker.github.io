@@ -18,8 +18,19 @@ module.exports = {
         heading: "var(--color-heading)",
         body: "var(--color-body)",
       },
+      typography: {
+        DEFAULT: {
+          css: {
+            pre: false,
+            code: false,
+            "pre code": false,
+            "code::before": false,
+            "code::after": false,
+          },
+        },
+      },
     },
   },
   variants: {},
-  plugins: [],
+  plugins: [require("@tailwindcss/typography")],
 };

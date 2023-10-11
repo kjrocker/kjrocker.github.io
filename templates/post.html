@@ -1,11 +1,9 @@
+<h1 class="text-3xl pb-2">$title$</h1>
 <article>
-    <section class="header">
-        Posted on $date$
-        $if(author)$
-            by $author$
-        $endif$
-    </section>
-    <section>
-        $body$
-    </section>
+  <section class="header text-stone-600 dark:text-stone-400 pb-2">
+    Posted on $date$ $if(author)$ by $author$ $endif$
+  </section>
+  <section class="prose dark:prose-invert prose-stone prose-pre:no-prose">
+    $body$
+  </section>
 </article>
