@@ -1,6 +1,6 @@
 ignore-project: False
-tests: True
-benchmarks: True
+tests: False
+benchmarks: False
 documentation: False
 
 package *

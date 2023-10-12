@@ -5,8 +5,8 @@ on:
     branches: [main, master]
 name: build
 jobs:
-  runhaskell:
-    name: Hello World
+  build:
+    name: Build Site
     runs-on: ubuntu-latest # or macOS-latest, or windows-latest
     steps:
       - uses: actions/checkout@v3
@@ -32,7 +32,7 @@ jobs:
 
       - name: Configure the build
         run: |
-          cabal configure --enable-tests --enable-benchmarks --disable-documentation --minimize-conflict-set
+          cabal configure --disable-documentation --minimize-conflict-set
           cabal build --dry-run
         # The last step generates dist-newstyle/cache/plan.json for the cache key.
 
@@ -62,3 +62,13 @@ jobs:
         run: |
           cabal build all
           cabal run site build
+
+      - name: Publish to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: bdf0c7b1a22029a14e35bb2576dac047
+          projectName: kevinrocker.com
+          directory: _site
+          # Optional: Enable this if you want to have GitHub Deployments triggered
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
