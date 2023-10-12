@@ -16,6 +16,8 @@ jobs:
         with:
           node-version: 18
           cache: npm
+
+      - name: Build Tailwind
         run: |
           npm install --frozen-lockfile
           npm run build
