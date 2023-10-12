@@ -11,12 +11,21 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: npm
+        run: |
+          npm install --frozen-lockfile
+          npm run build
+
       - name: Set up GHC
         uses: haskell-actions/setup@v2
         id: setup
         with:
-          # Defaults, added for clarity:
-          cabal-version: "latest"
+          ghc-version: 9.6.3
+          cabal-version: 3.10.1.0
           cabal-update: true
 
       - name: Configure the build
@@ -48,4 +57,6 @@ jobs:
           key: ${{ steps.cache.outputs.cache-primary-key }}
 
       - name: Build
-        run: cabal build all
+        run: |
+          cabal build all
+          cabal run site build
