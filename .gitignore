@@ -3,6 +3,8 @@ _cache/
 _site/
 node_modules
 
+css/style.css
+
 site
 site.hi
 site.o
