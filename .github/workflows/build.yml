@@ -68,7 +68,7 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: bdf0c7b1a22029a14e35bb2576dac047
-          projectName: kjrocker.github.io
+          projectName: kjrocker-github-io
           directory: _site
           # Optional: Enable this if you want to have GitHub Deployments triggered
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
