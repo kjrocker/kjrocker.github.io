@@ -1,0 +1,54 @@
+---
+title: Intro to GIN Indexes
+---
+
+I want to talk about my deep dives into the PostgreSQL documentation, which has totally consumed me the past few weeks.
+
+I've been reading about advanced indexes, particularly GIN Indexes. Most times when we're created an index, we want to order data for range queries, do an equality search, or sort efficiently. These are all B-Tree indexes, and they're not the only type. <!--more--> Just like B-Trees improve some basic lookup and sorting operations, GIN indexes improve a whole separate group of queries involving collections.
+
+Let's imagine a table like this:
+
+```sql
+CREATE TABLE farm_animals (
+    id SERIAL PRIMARY KEY,
+    name TEXT NOT NULL,
+    tags TEXT[] NOT NULL
+);
+```
+
+Loaded up with values
+
+```sql
+INSERT INTO farm_animals (name, tags) VALUES
+    ('Chicken', ARRAY['bird', 'domestic']),
+    ('Cow', ARRAY['mammal', 'domestic']),
+    ('Rooster', ARRAY['bird', 'domestic']),
+    ('Dog', ARRAY['mammal', 'domestic', 'pet']),
+    ('Cat', ARRAY['mammal', 'domestic', 'pet']),
+    ('Fish', ARRAY['aquatic']);
+```
+
+We try to find all the birds, but it's just too slow. This is going to be a very high-traffic query, and our data-set is huge.
+
+A GIN index will unpack the array, and put each _unique value_ on its own row with a list of pointers to all the rows containing that value.
+
+The resulting index looks like this:
+
+```txt
+farm_animals Table       GIN Index on tags
+------------------       ---------------------
+id | name    | tags      key     | row_pointers
+---|---------|--------   ------- | -------------
+ 1 | Chicken | bird      bird    | 1, 3
+ 2 | Cow     | mammal    mammal  | 2, 4, 5
+ 3 | Rooster | bird      domestic| 1, 2, 3, 4, 5
+ 4 | Dog     | mammal    pet     | 4, 5
+ 5 | Cat     | mammal    aquatic | 6
+ 6 | Fish    | aquatic
+```
+
+Now we can safely ask questions like "how many farm animals are domestic mammals?" or "find all the birds" without parsing the array column at all, just from the index. Now all our farm animal searches will scale.
+
+This can be used to unpack array columns, JSON columns, and used to create an index for full-text search (which definitely deserves its own topic).
+
+I hope you enjoyed Kevin's Postgres corner.

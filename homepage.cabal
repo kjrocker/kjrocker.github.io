@@ -1,0 +1,17 @@
+Name:               kjrocker
+Version:            0.1.0.0
+Synopsis:           Kevin Rocker's Stuff
+Description:        Kevin Rocker's Stuff
+Homepage:           https://kevinrocker.com/
+Category:           Web
+Build-type:         Simple
+Extra-source-files: README.markdown
+Cabal-version:      >= 1.8
+
+Executable site
+  Main-is:        site.hs
+  Ghc-options:    -Wall
+
+  Build-depends:
+    base, 
+    hakyll
