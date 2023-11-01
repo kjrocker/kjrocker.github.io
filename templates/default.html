@@ -6,7 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Kevin Rocker - $title$</title>
     <link rel="stylesheet" href="/$cssPath$" />
-    <meta name="description" content="Kevin Rocker's Site - $title$" />
+    <meta
+      name="description"
+      content="$if(meta)$$meta$$else$Kevin Rocker - $title$$endif$"
+    />
   </head>
   <body
     class="mx-auto max-w-3xl text-[#444] bg-[#eee] dark:bg-[#0d1117] dark:text-[#c9d1d9] pb-6 px-6 lg:px-0"

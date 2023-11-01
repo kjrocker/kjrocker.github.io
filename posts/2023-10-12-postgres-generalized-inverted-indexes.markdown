@@ -1,5 +1,6 @@
 ---
 title: Generalized Inverted Indexes And You
+meta: A quick overview of Inverted indexes and why they're so good
 ---
 
 I've been reading PostgreSQL documentation for fun lately, and I'd like to share what I've learned. Most recently, that's been advanced indexes and working with collection fields.
