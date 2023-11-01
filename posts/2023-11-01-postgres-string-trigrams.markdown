@@ -23,7 +23,7 @@ Or compare a substring to a larger string:
 ```sql
 select word_similarity ('potato', 'two potatos for the harvest festival') as word_similiarity;
 ```
-```text
+```txt
 word_similarity
 --------------
 0.857143
