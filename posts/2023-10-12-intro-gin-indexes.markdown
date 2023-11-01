@@ -1,14 +1,15 @@
 ---
-title: Intro to GIN Indexes
+title: Postgres 301: Generalized Inverted (GIN) Indexes 
 ---
 
 I've been completely engrossed in the PostgreSQL documentation lately, and I'd like to share some gems with you—specifically about the magical world of indexes and collections.
 
-Ever find yourself with a prexisting column full of arrays or JSON objects, and the complex `WHERE` clause for the latest feature is glacially slow? Well good news! You can search these complex data structures efficiently with Generalized Inverted Indexes, or GIN indexes. They're the Swiss Army knife of querying collections.<!--more-->
+Ever find yourself with a prexisting column full of arrays or JSON objects, and the complex `WHERE` clause for the latest feature is glacially slow? Well good news! You can search these complex data structures efficiently with [Generalized Inverted Indexes][https://www.postgresql.org/docs/current/gin-intro.html], or GIN indexes. They're the Swiss Army knife of querying collections.<!--more-->
 
-Like regular indexes, which are technically B-Tree Indexes, optimize basic lookups and sorting, GIN indexes drastically improve performance when dealing with collections.
+Just like B-Tree Indexes optimize basic lookups and sorting, GIN indexes improve performance for all types of operations involving collections.
+ For example, finding all rows that contain an element in an array column.
 
-Let's imagine a table like this:
+For a concrete example, let's imagine a table like this:
 
 ```sql
 CREATE TABLE farm_animals (
@@ -51,6 +52,8 @@ id | name    | tags      key     | row_pointers
 
 Now we can safely ask questions like "how many farm animals are domestic mammals?" or "find all the birds" without parsing the array column at all, just from the index. Now all our farm animal searches will scale.
 
-This can be used to unpack array columns, JSON columns, and used to create an index for full-text search (which definitely deserves its own topic).
+GIN indexes are versatile: they can be used to efficiently query array columns, JSON columns, and even to create an index for full-text search or text similarity checks—both topics that definitely deserve their own articles.
 
-Now you can use collection fields with comfort and the knowledge that you're not sacrificing searchability or speed.
+With this, you can use collection fields with comfort and the knowledge that you're not sacrificing searchability or speed. Now go forth and write that complex `WHERE` statement, filter on that JSON field, and aggregate your domesticated birds.
+
+For more reading, check out the [official Postgres documentation][https://www.postgresql.org/docs/current/gin-intro.html]. 
