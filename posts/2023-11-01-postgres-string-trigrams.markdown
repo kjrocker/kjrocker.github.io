@@ -4,6 +4,7 @@ title: pg-trgm and Text Similarity Search
 I asked ChatGPT what are some advanced Postgres tricks I should learn about, and one of the things that came up was `pg_trgm`. After a bit [more reading](https://www.postgresql.org/docs/current/pgtrgm.html), I'm convinced this plugin should be an essential part of any database engineers toolkit. <!--more-->
 
 From the documentation:
+
 > The `pg_trgm` module provides functions and operators for determining the similarity of alphanumeric text based on trigram matching, as well as index operator classes that support fast searching for similar strings.
 
 Trigram matching is a whole algorithm on its own, but it's enough to say that it "breaks strings into three-character chunks and counts how many chunks are shared".
