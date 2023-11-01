@@ -1,13 +1,15 @@
 ---
-title: Generalized Inverted Indexes And You 
+title: Generalized Inverted Indexes And You
 ---
 
-I've been completely engrossed in the PostgreSQL documentation lately, and I'd like to share some gems with you—specifically about the magical world of indexes and collections.
+I've been reading PostgreSQL documentation for fun lately, and I'd like to share what I've learned. Most recently, that's been advanced indexes and working with collection fields.
 
-Ever find yourself with a prexisting column full of arrays or JSON objects, and the complex `WHERE` clause for the latest feature is glacially slow? Well good news! You can search these complex data structures efficiently with [Generalized Inverted Indexes](https://www.postgresql.org/docs/current/gin-intro.html), or GIN indexes. They're the Swiss Army knife of querying collections.<!--more-->
+If you've ever worked prexisting array or JSON column and needed a complex `WHERE` clause for the latest feature, you might have worried about query performance. Or maybe you _didn't_ worry about it, only to find out later that it was glacially slow.<!--more--> Well good news! You can search these data structures efficiently with [Generalized Inverted Indexes](https://www.postgresql.org/docs/current/gin-intro.html), or GIN indexes.
+
+I'm not entirely clear if the term is "GIN index" or just "GIN", but I'll stick to the former.
 
 Just like B-Tree Indexes optimize basic lookups and sorting, GIN indexes improve performance for all types of operations involving collections.
- For example, finding all rows that contain an element in an array column.
+For example, finding all rows that contain an element in an array column.
 
 For a concrete example, let's imagine a table like this:
 
@@ -56,4 +58,4 @@ GIN indexes are versatile: they can be used to efficiently query array columns, 
 
 With this, you can use collection fields with comfort and the knowledge that you're not sacrificing searchability or speed. Now go forth and write that complex `WHERE` statement, filter on that JSON field, and aggregate your domesticated birds.
 
-For more reading, check out the [official Postgres documentation](https://www.postgresql.org/docs/current/gin-intro.html). 
+For more reading, check out the [official Postgres documentation](https://www.postgresql.org/docs/current/gin-intro.html).
