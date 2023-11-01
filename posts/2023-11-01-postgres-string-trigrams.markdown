@@ -13,7 +13,7 @@ You can either compare two strings directly:
 ```sql
 select similarity('shiori novella', 'murasaki shion') as similiarity;
 ```
-```text
+```txt
 similiarity
 -----------
 0.153846
