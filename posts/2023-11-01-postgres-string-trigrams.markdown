@@ -1,7 +1,7 @@
 ---
-title: Postgres 301 - `pg-trgm` and Text Similarity
+title: pg-trgm and Text Similarity Search
 ---
-I asked ChatGPT what are some advanced Postgres tricks I should learn about, and one of the things that came up was `pg_trgm`. After a bit [more reading][https://www.postgresql.org/docs/current/pgtrgm.html], I'm convinced this plugin should be an essential part of any database engineers toolkit. <!--more-->
+I asked ChatGPT what are some advanced Postgres tricks I should learn about, and one of the things that came up was `pg_trgm`. After a bit [more reading](https://www.postgresql.org/docs/current/pgtrgm.html), I'm convinced this plugin should be an essential part of any database engineers toolkit. <!--more-->
 
 From the documentation:
 > The `pg_trgm` module provides functions and operators for determining the similarity of alphanumeric text based on trigram matching, as well as index operator classes that support fast searching for similar strings.
@@ -46,7 +46,7 @@ You could also use this for a Google-style "Did You Mean...." UI for when a sear
 
 If you've ever worked in a system where you searched for "tickets" but the thing you actually needed was misspelled "tocket", then you need a more flexible keyword search. But if you don't need or want to invest in true full-text search, this is a simple alternative.
 
-For more reading, check out the [official documentation][https://www.postgresql.org/docs/current/pgtrgm.html].
+For more reading, check out the [official documentation](https://www.postgresql.org/docs/current/pgtrgm.html).
 
 ### One more thing
 Because this extension converts text into an array, you can _absolutely_ create a GIN Index with this to optimize even further.
