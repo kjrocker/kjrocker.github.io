@@ -1,5 +1,5 @@
 ---
-title: Postgres 301 - Generalized Inverted (GIN) Indexes 
+title: Generalized Inverted Indexes And You 
 ---
 
 I've been completely engrossed in the PostgreSQL documentation lately, and I'd like to share some gems with you—specifically about the magical world of indexes and collections.
