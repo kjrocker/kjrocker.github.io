@@ -1,10 +1,13 @@
-dist-newstyle/
-_cache/
-_site/
+# Node modules
 node_modules
 
-css/style.css
+# generated files
+dist
+src/_includes/css
+src/_includes/scripts
 
-site
-site.hi
-site.o
+# cache
+.cache
+
+# secret data
+.env
