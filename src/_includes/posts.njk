@@ -1,0 +1,23 @@
+{% for post in collections.blog | reverse %}
+    <h2 class="py-1 text-lg first:pt-0 last:pb-0">
+        <a
+    class="text-blue-700 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-600 text-2xl"
+    href="{{ post.url }}"
+    >{{ post.data.title }}</a
+  >
+    </h2>
+    <section class="text-stone-600 dark:text-stone-400 pb-2">{{ post.date | postDate }}</section>
+    {% if post.data.teaser %}
+        <div class="mb-6">
+            <div class="prose md:prose-lg dark:prose-invert prose-stone">
+                {{ post.data.teaser | markdownify | safe }} 
+            </div>
+            <a
+            class="text-blue-700 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-600 leading-loose not-prose"
+            href="{{ post.url }}"
+            aria-label="Read More about {{ post.data.title}}"
+            >Read more</a
+            >
+        </div>
+    {% endif %}
+{% endfor %}

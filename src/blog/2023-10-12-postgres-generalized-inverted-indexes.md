@@ -1,11 +1,17 @@
 ---
 title: Generalized Inverted Indexes And You
 meta: A quick overview of Inverted indexes and why they're so good
+tags: blog
+date: 2023-10-12
+teaser: |
+    I've been reading PostgreSQL documentation for fun lately, and I'd like to share what I've learned. Right now, that means advanced indexes and how to work with collection fields efficiently.
+
+    If you've ever worked prexisting array or JSON column and needed a complex `WHERE` clause for the latest feature, you might have worried about query performance. Or maybe you _didn't_ worry about it, only to find out later that it was glacially slow.
 ---
 
 I've been reading PostgreSQL documentation for fun lately, and I'd like to share what I've learned. Right now, that means advanced indexes and how to work with collection fields efficiently.
 
-If you've ever worked prexisting array or JSON column and needed a complex `WHERE` clause for the latest feature, you might have worried about query performance. Or maybe you _didn't_ worry about it, only to find out later that it was glacially slow.<!--more--> Well good news! You can search these data structures efficiently with [Generalized Inverted Indexes](https://www.postgresql.org/docs/current/gin-intro.html), or GIN indexes.
+If you've ever worked prexisting array or JSON column and needed a complex `WHERE` clause for the latest feature, you might have worried about query performance. Or maybe you _didn't_ worry about it, only to find out later that it was glacially slow.Well good news! You can search these data structures efficiently with [Generalized Inverted Indexes](https://www.postgresql.org/docs/current/gin-intro.html), or GIN indexes.
 
 I'm not entirely clear if the term is "GIN index" or just "GIN", but I'll stick to the former.
 

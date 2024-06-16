@@ -1,11 +1,7 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
-  content: [
-    "./posts/**/*.{html, markdown}",
-    "./templates/**/*.{html, markdown}",
-    "*.{html, markdown}",
-  ],
+  content: ["./_site/**/*.{html,js}", "./_site/project/*"],
   theme: {
     extend: {
       fontFamily: {
@@ -13,10 +9,10 @@ module.exports = {
         serif: ["Roboto Slab", ...defaultTheme.fontFamily.serif],
       },
       colors: {
-        primary: "var(--color-primary)",
-        secondary: "var(--color-secondary)",
-        heading: "var(--color-heading)",
-        body: "var(--color-body)",
+        background: "#eee",
+        primary: "#444",
+        'dark-background': "#0d1117",
+        'dark-primary': "#c9d1d9",
       },
       typography: {
         DEFAULT: {

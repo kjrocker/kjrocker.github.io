@@ -1,6 +1,10 @@
 ---
 title: pg-trgm and Text Similarity Search
 meta: A brief introduction to the pg-trgm plugin in Postgres and its many uses
+tags: blog
+date: 2023-11-01
+teaser: |
+  I asked ChatGPT what are some advanced Postgres tricks I should learn about, and one of the things that came up was `pg_trgm`. After a bit [more reading](https://www.postgresql.org/docs/current/pgtrgm.html), I'm convinced this plugin should be an essential part of any database engineers toolkit.
 ---
 
 I asked ChatGPT what are some advanced Postgres tricks I should learn about, and one of the things that came up was `pg_trgm`. After a bit [more reading](https://www.postgresql.org/docs/current/pgtrgm.html), I'm convinced this plugin should be an essential part of any database engineers toolkit. <!--more-->
