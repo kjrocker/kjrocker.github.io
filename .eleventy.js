@@ -4,10 +4,14 @@ const { DateTime } = require('luxon');
 const { marked } = require('marked');
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const htmlmin = require("html-minifier-terser");
+const pluginSitemap = require("@quasibit/eleventy-plugin-sitemap");
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(EleventyRenderPlugin);
   eleventyConfig.addPlugin(syntaxHighlight);
+  eleventyConfig.addPlugin(pluginSitemap, {
+    hostname: 'https://www.kevinrocker.com',
+});
 
   eleventyConfig.addPassthroughCopy("src/assets/css");
 
