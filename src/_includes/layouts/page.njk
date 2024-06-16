@@ -1,0 +1,12 @@
+---
+layout: layouts/base.njk
+---
+
+<body class="mx-auto max-w-3xl text-primary bg-background dark:bg-dark-background dark:text-dark-primary px-6 lg:px-0 flex flex-col min-h-screen">
+    {% include "header.njk" %}
+    <main class="leading-relaxed flex-[1_0_auto]" role="main">
+        <h1 class="text-3xl my-10">{{ pageTitle }}</h1>
+        {{ content | safe }}
+    </main>
+    {% include "footer.njk" %}
+</body>

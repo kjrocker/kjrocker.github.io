@@ -49,9 +49,5 @@
 
         <title>{{ title }}</title>
     </head>
-    <body class="mx-auto max-w-3xl text-primary bg-background dark:bg-dark-background dark:text-dark-primary px-6 lg:px-0 flex flex-col min-h-screen">
-        {% include "nav.njk" %}
-        <main class="leading-relaxed flex-[1_0_auto]" role="main">{{ content | safe}}</main>
-        {% include "footer.njk" %}
-    </body>
+    {{ content | safe }}
 </html>

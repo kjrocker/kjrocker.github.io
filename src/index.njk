@@ -1,20 +1,28 @@
 ---
 title: Kevin Rocker
 meta: Kevin Rocker's Homepage and Recent Posts
-layout: layouts/base.njk
+layout: layouts/page.njk
+pageTitle: Hello world!
 ---
 
-<h1 class="text-3xl my-10">Hello world!</h1>
-<div class="max-w-prose md:text-lg flex flex-col my-10 gap-y-10">
-  <p>
-    Welcome welcome, come on in, pull up a seat. You've found the corner of the
-    internet where I do my musings. We're still in the early days of this whole
-    blog thing, but I think we'll have a good time.
-  </p>
+<section class="max-w-prose md:text-lg flex flex-col my-10 gap-y-4">
+<p>
+    Welcome welcome, come on in, pull up a seat. You've found my site, a love letter to an older internet that I barely remember. Before Javascript, before everything was flooded with ads and flashy graphics, we had text.
+</p>
 
-  <p>
-    Here are some things I've written. I hope you enjoy them.
-  </p>
-</div>
+<p>
+    Mostly this is where I think about Postgres. One day I'll write about something else, but for now, it's Postgres. I do have other interests, I promise.
+</p>
 
-{% include "posts.njk" %}
+<p>
+    I build sites, not quite as minimal as this one, for small businesses as well.
+</p>
+
+<a href="mailto:{{ personal.email }}" class="px-4 py-2 mt-2 font-semibold rounded-md bg-dark-background dark:bg-background w-fit text-dark-primary dark:text-primary">
+    Get In Touch!
+</a>
+</section>
+
+<section>
+    {% include "posts.njk" %}
+</section>
