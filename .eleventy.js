@@ -23,7 +23,7 @@ module.exports = function (eleventyConfig) {
     markdownTemplateEngine: "njk",
     dir: {
       input: 'src',
-      output: 'public'  // This is the default value anyhow
+      output: '_site'  // This is the default value anyhow
     }
   };
 };
