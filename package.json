@@ -12,7 +12,7 @@
   },
   "scripts": {
     "start": "npm-run-all -p watch:*",
-    "build": "npm-run-all build:*",
+    "build": "npm run build:css && npm run build:eleventy",
     "watch:eleventy": "npx eleventy --serve",
     "watch:css": "tailwindcss -i src/assets/css/tailwind.css -o _site/assets/tailwind.css --watch",
     "build:css": "tailwindcss -i src/assets/css/tailwind.css -o _site/assets/tailwind.css",
