@@ -23,6 +23,7 @@ export default function (eleventyConfig) {
 });
 
   eleventyConfig.addPassthroughCopy("src/assets/css");
+  eleventyConfig.addPassthroughCopy("src/_redirects");
 
   eleventyConfig.addFilter("postDate", (date) => {
     return DateTime.fromJSDate(date, {zone: 'utc'}).toLocaleString(DateTime.DATE_FULL);
