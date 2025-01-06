@@ -2,7 +2,7 @@
 title: Introducing...Epochal!
 meta: I'd like to introduce Epochal, a novel natural language date library handling for ambiguous historical dates.
 tags: blog
-date: 2023-01-06
+date: 2025-01-06
 teaser: |
     Ever wanted to work with those ambiguous date ranges you see in museum exhibits? Whether it's plotting the timeline of Vermeer’s masterpieces or untangling the chaotic revolutions of 18th-century Europe, I’ve got a solution for you—or maybe just for me! Meet Epochal, a novel date library for Typescript that brings natural language date parsing to a whole new level.
 ---
