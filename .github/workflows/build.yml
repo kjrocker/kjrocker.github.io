@@ -9,16 +9,19 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 9.15.4
+
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version: 20
-          cache: npm
 
       - name: Build
         run: |
-          npm install --frozen-lockfile
-          npm run build
+          pnpm install --prefer-frozen-lockfile
+          pnpm build
 
       - name: Publish to Cloudflare Pages
         uses: cloudflare/pages-action@v1
@@ -26,6 +29,6 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: bdf0c7b1a22029a14e35bb2576dac047
           projectName: kjrocker-github-io
-          directory: _site
+          directory: dist
           # Optional: Enable this if you want to have GitHub Deployments triggered
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
