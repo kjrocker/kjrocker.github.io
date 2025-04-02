@@ -53,14 +53,13 @@ const {
     </main>
     <Footer />
   </body>
+  <style is:inline>
+    body {
+      visibility: visible;
+      opacity: 1;
+      transition:
+        visibility 0.2s linear,
+        opacity 0.2s linear;
+    }
+  </style>
 </html>
-
-<style is:global>
-  body {
-    visibility: visible;
-    opacity: 1;
-    transition:
-      visibility 0.2s linear,
-      opacity 0.2s linear;
-  }
-</style>
