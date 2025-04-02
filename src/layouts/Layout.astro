@@ -34,7 +34,7 @@ const {
     <meta property="og:url" content={Astro.url} />
 
     <title>{title}</title>
-    <script>
+    <script is:inline>
       /*to prevent Firefox FOUC, this must be here*/
       let FF_FOUC_FIX;
     </script>
