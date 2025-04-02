@@ -24,7 +24,7 @@ const pageTitle = post.data.title;
 ---
 
 <Layout {title} {description} {pageTitle}>
-  <article class="prose dark:prose-invert prose-stone max-w-none">
+  <article class="prose md:prose-sm dark:prose-invert prose-stone">
     <div class="text-stone-600 dark:text-stone-400 pb-8">
       {
         post.data.date.toLocaleDateString("en-US", {
