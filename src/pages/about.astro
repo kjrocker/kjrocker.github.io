@@ -1,0 +1,31 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const title = "About - Kevin Rocker";
+const description = "A bit about me, what I like, and what I do";
+const pageTitle = "About Me";
+---
+
+<Layout {title} {description} {pageTitle}>
+  <section class="max-w-prose mx-auto md:text-sm flex flex-col my-10 gap-y-10">
+    <p>
+      I'm a professional software developer and as of 2021 a digital nomad. I
+      specialize in Typescript, SQL, and functional programming. When I'm not
+      working I'm out taking photos, listening to audiobooks, learning Japanese,
+      or just going on long walks in the city.
+    </p>
+
+    <p>
+      I'm a huge believer in fast, efficient websites. This site is built in
+      Astro and uses modern web technologies, including flexbox and the
+      "prefers-color-scheme" media query, but still runs without a drop of
+      Javascript. If you're not building a web app, Javascript is just overkill.
+    </p>
+
+    <p class="text-background dark:text-dark-background">
+      There is an idea of a Kevin Rocker, some kind of abstraction. And though
+      you can see my GitHub commits and hear the tenor of my voice, and you
+      probably sense that we have much in common, I simply am not there...
+    </p>
+  </section>
+</Layout>

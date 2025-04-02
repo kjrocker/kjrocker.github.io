@@ -1,0 +1,39 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const title = "Kevin Rocker";
+const description = "My personal site and occasional blog";
+const pageTitle = "Hello world!";
+---
+
+<Layout {title} {description} {pageTitle}>
+  <section class="max-w-prose mx-auto md:text-sm flex flex-col my-10 gap-y-4">
+    <p>
+      Welcome welcome, come on in, pull up a seat. You've found my site, a love
+      letter to an older internet that I barely remember. Before Javascript,
+      before everything was flooded with ads and flashy graphics, we had text.
+    </p>
+
+    <p>
+      Mostly this is where I think about Postgres. One day I'll write about
+      something else, but for now, it's Postgres. I do have other interests, I
+      promise.
+    </p>
+
+    <p>
+      I build sites, not quite as minimal as this one, for small businesses as
+      well.
+    </p>
+
+    <a
+      href="mailto:me@kevinrocker.com"
+      class="px-4 py-2 mt-2 font-semibold rounded-md bg-dark-background dark:bg-background w-fit text-dark-primary dark:text-primary"
+    >
+      Get In Touch!
+    </a>
+  </section>
+
+  <section>
+    <!-- Posts section will be added later -->
+  </section>
+</Layout>
