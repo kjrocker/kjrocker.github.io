@@ -1,0 +1,26 @@
+---
+import { getCollection } from "astro:content";
+import Post from "./Post.astro";
+
+const posts = await getCollection("blog");
+const sortedPosts = posts.sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime()
+);
+---
+
+<article class="space-y-8">
+  {
+    sortedPosts.map((post) => (
+      <Post
+        post={{
+          url: `/blog/${post.slug}`,
+          data: {
+            title: post.data.title,
+            date: post.data.date,
+            teaser: post.data.teaser,
+          },
+        }}
+      />
+    ))
+  }
+</article>
