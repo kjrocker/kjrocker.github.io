@@ -1,0 +1,33 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import Post from "../components/Post.astro";
+
+const title = "Blog - Kevin Rocker";
+const description = "My writing on software development";
+const pageTitle = "My Writing";
+
+const posts = await getCollection("blog");
+const sortedPosts = posts.sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime()
+);
+---
+
+<Layout {title} {description} {pageTitle}>
+  <section class="space-y-8">
+    {
+      sortedPosts.map((post) => (
+        <Post
+          post={{
+            url: `/blog/${post.slug}`,
+            data: {
+              title: post.data.title,
+              date: post.data.date,
+              teaser: post.data.teaser,
+            },
+          }}
+        />
+      ))
+    }
+  </section>
+</Layout>
