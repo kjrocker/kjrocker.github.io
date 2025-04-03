@@ -11,3 +11,11 @@
     --color-dark-background: #0d1117;
     --color-dark-primary: #c9d1d9;
 }
+
+body {
+    visibility: visible;
+    opacity: 1;
+    transition:
+        visibility 0.2s linear,
+        opacity 0.2s linear;
+}
