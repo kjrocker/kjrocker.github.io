@@ -12,6 +12,7 @@ A digital garden is a collection of thoughts, ideas, and resources that grow ove
 ## Programming Resources
 
 - [The 'Awesome' Network](https://github.com/sindresorhus/awesome) - The ultimate, open sourced, collaborative collection of awesome links.
+- [Eric Meyer](https://meyerweb.com/) in general, and [Designing for Crisis](https://medium.com/net-magazine/designing-for-crisis-9cab10b4c519) in particular.
 
 ## Books
 
