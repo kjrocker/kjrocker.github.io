@@ -17,6 +17,7 @@ A digital garden is a collection of thoughts, ideas, and resources that grow ove
 ## Books
 
 - [The Mythical Man Month, Fred Brooks](https://www.goodreads.com/book/show/13629.The_Mythical_Man_Month) - A timeless text, as insightful now as when it was published in 1975.
+- [How To Read a Book](https://www.goodreads.com/book/show/567610.How_to_Read_a_Book) - Probably the oldest text on this list, this 1940 guide is exactly what it says on the tin. A must-read for anyone who wants to get more out of their reading.
 - [The Story of Art, E.H. Gombrich](https://www.goodreads.com/book/show/222078.The_Story_of_Art?ref=nav_sb_noss_l_12) - A must-read for anyone looking for an accessible introduction to art and art history. Informative and unpretentious.
 - [The Way The World Really Works, Vaclav Smil](https://www.goodreads.com/book/show/56587388-how-the-world-really-works) - Smil is probably Bill Gate's favorite author. He's clear-sighted, numbers-driven, and seemingly immune to hype.
 
