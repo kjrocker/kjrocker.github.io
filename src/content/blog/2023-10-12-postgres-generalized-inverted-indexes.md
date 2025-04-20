@@ -3,6 +3,7 @@ title: Generalized Inverted Indexes And You
 meta: A quick overview of Inverted indexes and why they're so good
 tags: blog
 date: 2023-10-12
+slug: postgres-generalized-inverted-indexes
 teaser: |
     I've been reading PostgreSQL documentation for fun lately, and I'd like to share what I've learned. Right now, that means advanced indexes and how to work with collection fields efficiently.
 

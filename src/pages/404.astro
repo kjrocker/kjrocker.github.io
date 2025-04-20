@@ -1,0 +1,23 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Posts from "../components/Posts.astro";
+
+const title = "Oops! Page not found";
+const description = "Sorry, you seem to have hit a dead end.";
+const pageTitle = "404 - Page Not Found";
+---
+
+<Layout {title} {description} {pageTitle}>
+  <section class="max-w-prose mx-auto md:text-sm flex flex-col my-10 gap-y-4">
+    <p>
+      Sorry, but the page you were looking for doesn't exist. I might have moved it, or it may have been removed.
+    </p>
+
+    <p>
+      While you're here, why not check out some of my latest posts? You might find something interesting!
+    </p>
+  </section>
+  <section>
+    <Posts />
+  </section>
+</Layout>
