@@ -30,6 +30,7 @@ A digital garden is a collection of thoughts, ideas, and resources that grow ove
 - [Databases Are Just Files. Postgres Too.](https://tselai.com/all-databases-are-just-files) - Demystifying some Postgres fundamentals.
 - [Life Altering Postgres Patterns](https://mccue.dev/pages/3-11-25-life-altering-postgresql-patterns) - Some simple but helpful tips and tricks, implemented in pure SQL.
 - [LLMs can't stop making up software dependencies](https://www.theregister.com/2025/04/12/ai_code_suggestions_sabotage_supply_chain/) - A reminder that LLMs are text prediction tools, and their mistakes have consequences.
+- [Figma’s not a design tool](https://uxdesign.cc/figmas-not-a-design-tool-it-s-a-rube-goldberg-machine-for-avoiding-code-2a24f11add5d) - Why Figma can be a curse.
 
 *This garden is constantly growing. Check back often for new additions!*
 
